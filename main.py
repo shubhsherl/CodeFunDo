@@ -10,6 +10,10 @@ from nltk import pos_tag
 from nltk.tokenize import word_tokenize
 from nltk.chunk import conlltags2tree
 from nltk.tree import Tree
+import SearchAPI
+import json
+from pprint import pprint
+from statistics import stdev
 
 def process_text(txt_file):
     raw_text = txt_file
@@ -70,16 +74,49 @@ def run(txt):
     (p,l) = get_tags(txt)
     p = clean_up(p,c=0)
     l = clean_up(l,c=5)
-return (list(p), list(l))
+    return (list(p), list(l))
 
 
-def processor(tweet):
+def relevant(tweet,disaster):
     text.append(tweet['text'])
     vectorizer = HashingVectorizer(stop_words='english', alternate_sign=False,n_features=2**16)
     x=vectorizer.transform(text)
-    disaster=clf.predict(x)
-    if disaster=0:
+    r=clf.predict(x)
+    if r==0:
         return 0
     else:
-        run(tweet(txt))
+        return 1
 
+
+def get_info(disaster):
+    tweets=SearchAPI.fetch(disaster['name'],geocode=None,count=10)
+    if len(tweets)==0:
+        return disaster
+    for tweet in tweets:
+        r=relevant(tweet,disaster)
+        lat=[]
+        longi=[]
+        if(r==1):
+            disaster['people'],disaster['places']=run(tweet['text'])
+            lat.append(tweet['coordinate'][0])
+            longi.append(tweet['coordinate'][1])
+        disaster['tweet_center']=[sum(lat)/float(len(lat)),sum(longi)/float(len(longi))]
+        disaster['rad']=[stdev(lat),stdev(longi)]
+        return disaster
+
+file=open('crises?auth_token=-XB6vC77F4HLxqd-ms3F')
+disasters=json.load(file)
+final=[]
+for dis in disasters:
+    twee={}
+    disaster={}
+    disaster['name']=dis['dc_subject'][0]
+    disaster['location']=str(dis['foaf_based_near'][0])+','+str(dis['foaf_based_near'][1])+','+'10km'
+    pprint(disaster)
+    disast=get_info(disaster)
+    twee['orig']=dis
+    twee['new']=disast
+    final.append(twee)
+pprint(final)
+fl=open('with_tweets.json','w')
+json.dump(final,fl)
