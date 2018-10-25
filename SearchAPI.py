@@ -27,8 +27,9 @@ def fetch(query, geocode = None, count = 100, filter_out_retweets = True):
 
     while len(tweets) < count:
         try:
+            # print(query,geocode)
             results = twitter.search.tweets(q=query, lang='en', count=API_MAX, geocode = geocode)
-            print(results)
+            # print(results)
             if len(results['statuses'])==0:
                 return tweets
         except Exception as e:
@@ -36,7 +37,7 @@ def fetch(query, geocode = None, count = 100, filter_out_retweets = True):
             print('[%s] Sleeping 5 minutes...' % time.ctime())
             time.sleep(60 * 5)
             continue
-        print(count,geocode,query)
+        # print(count,geocode,query)
         for result in results["statuses"]:
             # print(count,geocode,query)
             text = result["text"].encode('utf-8').strip()
@@ -46,7 +47,7 @@ def fetch(query, geocode = None, count = 100, filter_out_retweets = True):
                      "location" : location,
                      "choose_one" : 'Unknown',
                      "choose_one:confidence" : 0}
-            print('[%d] %s' % (len(tweets),tweet))
+            # print('[%d] %s' % (len(tweets),tweet))
             tweets.append(tweet)
             if not next_max_id:
                 next_max_id = result["id"]

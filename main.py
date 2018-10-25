@@ -14,6 +14,7 @@ import SearchAPI
 import json
 from pprint import pprint
 from statistics import stdev
+import sys
 
 def process_text(txt_file):
     raw_text = txt_file
@@ -77,7 +78,7 @@ def run(txt):
     return (list(p), list(l))
 
 
-def relevant(tweet,disaster):
+def relevant(tweet):
     text.append(tweet['text'])
     vectorizer = HashingVectorizer(stop_words='english', alternate_sign=False,n_features=2**16)
     x=vectorizer.transform(text)
@@ -89,9 +90,11 @@ def relevant(tweet,disaster):
 
 
 def get_info(disaster):
-    tweets=SearchAPI.fetch(disaster['name'],geocode=None,count=10)
+    tweets=SearchAPI.fetch(disaster['name'],geocode=disaster['location'],count=10)
     if len(tweets)==0:
+        disaster['got_tweets']=False
         return disaster
+    disaster['got_tweets']=True
     for tweet in tweets:
         r=relevant(tweet,disaster)
         lat=[]
@@ -103,20 +106,27 @@ def get_info(disaster):
         disaster['tweet_center']=[sum(lat)/float(len(lat)),sum(longi)/float(len(longi))]
         disaster['rad']=[stdev(lat),stdev(longi)]
         return disaster
-
-file=open('crises?auth_token=-XB6vC77F4HLxqd-ms3F')
+file_name=sys.argv[1]
+file=open(file_name)
 disasters=json.load(file)
 final=[]
 for dis in disasters:
-    twee={}
     disaster={}
     disaster['name']=dis['dc_subject'][0]
     disaster['location']=str(dis['foaf_based_near'][0])+','+str(dis['foaf_based_near'][1])+','+'10km'
     pprint(disaster)
     disast=get_info(disaster)
-    twee['orig']=dis
-    twee['new']=disast
-    final.append(twee)
+    dis['got_tweets']=disast['got_tweets']
+    if disast['got_tweets']==True:
+        dis['people']=disast['people']
+        dis['location']=disast['location']
+        dis['tweet_center']=disast['tweet_center']
+        dis['rad']=disast['rad']
+    final.append(dis)
 pprint(final)
 fl=open('with_tweets.json','w')
 json.dump(final,fl)
+
+# tweetCriteria = GetOldTweets.got.manager.TweetCriteria().setQuerySearch('cyclone').setSince("2018-10-10").setUntil("2018-10-15").setMaxTweets(100).setNear('21.7,85.6').setWithin('10mi')
+# tweet = GetOldTweets.got.manager.TweetManager.getTweets(tweetCriteria)[0]
+# print(tweet.text)
