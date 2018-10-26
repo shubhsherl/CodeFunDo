@@ -1,0 +1,7 @@
+python 3.6+
+pickle
+sklearn
+numpy
+nltk
+twitter
+
