@@ -2,8 +2,6 @@ import pickle
 file = open("diff.pkl",'rb')
 clf=pickle.load(file)
 from sklearn.feature_extraction.text import HashingVectorizer
-text=[]
-text.append("Birmingham Wholesale Market is ablaze BBC News - Fire breaks out at Birmingham's Wholesale Market http://t.co/irWqCEZWEU")
 import numpy as np
 import nltk
 from nltk import pos_tag
@@ -73,16 +71,16 @@ def clean_up(arr,c=20):
 
 def run(txt):
     (p,l) = get_tags(txt)
-    p = clean_up(p,c=0)
-    l = clean_up(l,c=5)
     return (list(p), list(l))
 
 
 def relevant(tweet):
+    text=[]
+    text.append("Birmingham Wholesale Market is ablaze BBC News - Fire breaks out at Birmingham's Wholesale Market http://t.co/irWqCEZWEU")
     text.append(tweet['text'])
     vectorizer = HashingVectorizer(stop_words='english', alternate_sign=False,n_features=2**16)
     x=vectorizer.transform(text)
-    r=clf.predict(x)
+    r=clf.predict(x[1])
     if r==0:
         return 0
     else:
@@ -90,22 +88,25 @@ def relevant(tweet):
 
 
 def get_info(disaster):
-    tweets=SearchAPI.fetch(disaster['name'],geocode=disaster['location'],count=10)
+    tweets=SearchAPI.fetch(disaster['name'],count=100)
     if len(tweets)==0:
         disaster['got_tweets']=False
         return disaster
     disaster['got_tweets']=True
     for tweet in tweets:
-        r=relevant(tweet,disaster)
-        lat=[]
-        longi=[]
-        if(r==1):
-            disaster['people'],disaster['places']=run(tweet['text'])
-            lat.append(tweet['coordinate'][0])
-            longi.append(tweet['coordinate'][1])
-        disaster['tweet_center']=[sum(lat)/float(len(lat)),sum(longi)/float(len(longi))]
-        disaster['rad']=[stdev(lat),stdev(longi)]
-        return disaster
+        r=relevant(tweet)
+        # lat=[]
+        # longi=[]
+        if r==1:
+            disaster['people'],disaster['places']=run(tweet['text'].decode('utf-8'))
+            disaster['people'].append(tweet['user'])
+            # lat.append(tweet['coordinates'][0])
+            # longi.append(tweet['coordinates'][1])
+        # disaster['tweet_center']=[sum(lat)/float(len(lat)),sum(longi)/float(len(longi))]
+        # disaster['rad']=[stdev(lat),stdev(longi)]
+    disaster['safe_latitude']=disaster['latitude']+3.21667
+    disaster['safe_longitude']=disaster['longitude']+2
+    return disaster
 file_name=sys.argv[1]
 file=open(file_name)
 disasters=json.load(file)
@@ -113,20 +114,23 @@ final=[]
 for dis in disasters:
     disaster={}
     disaster['name']=dis['dc_subject'][0]
-    disaster['location']=str(dis['foaf_based_near'][0])+','+str(dis['foaf_based_near'][1])+','+'10km'
+    disaster['longitude']=dis['foaf_based_near'][0]
+    disaster['latitude']=dis['foaf_based_near'][1]
     pprint(disaster)
     disast=get_info(disaster)
     dis['got_tweets']=disast['got_tweets']
     if disast['got_tweets']==True:
         dis['people']=disast['people']
-        dis['location']=disast['location']
-        dis['tweet_center']=disast['tweet_center']
-        dis['rad']=disast['rad']
+        dis['places']=disast['places']
+        # dis['tweet_center']=disast['tweet_center']
+        # dis['rad']=disast['rad']
+        dis['safe_longitude']=str(disast['safe_longitude'])
+        dis['safe_latitude']=str(disast['safe_latitude'])
     final.append(dis)
 pprint(final)
 fl=open('with_tweets.json','w')
 json.dump(final,fl)
 
 # tweetCriteria = GetOldTweets.got.manager.TweetCriteria().setQuerySearch('cyclone').setSince("2018-10-10").setUntil("2018-10-15").setMaxTweets(100).setNear('21.7,85.6').setWithin('10mi')
-# tweet = GetOldTweets.got.manager.TweetManager.getTweets(tweetCriteria)[0]
+# tweet = GetOldTweets.got.manager.TweetManager.getTweets(tweetCriteria)
 # print(tweet.text)
