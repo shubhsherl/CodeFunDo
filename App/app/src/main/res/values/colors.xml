@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#21618c </color>
+    <color name="colorPrimaryDark">#025185</color>
+    <color name="colorAccent">#448aff</color>
+    <color name="radioButton">#A9A9A9</color>
+    <color name="checkBox">#A9A9A9</color>
+    <color name="reviewFonts">#4b50d4</color>
+    <color name="navigationBarColor">#000000</color>
+</resources>

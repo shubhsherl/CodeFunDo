@@ -1,0 +1,80 @@
+<resources>
+  <string name="app_name">WatchErth</string>
+  <string name="title_activity_dashboard">Dashboard</string>
+
+  <string name="navigation_drawer_open">Open navigation drawer</string>
+  <string name="navigation_drawer_close">Close navigation drawer</string>
+
+  <string name="action_settings">Settings</string>
+
+  <string name="hello_blank_fragment">Hello blank fragment</string>
+
+  <string name="facebook_app_id">395097437693733</string>
+  <string name="fb_login_protocol_scheme">fb395097437693733</string>
+
+  <!-- resources for distance spinner in notification settings -->
+  <string-array name="subscription_setting_distance">
+    <item>1.0</item>
+    <item>2.0</item>
+    <item>3.0</item>
+    <item>4.0</item>
+  </string-array>
+
+  <string name="label_sos">SEND S.O.S. SIGNAL</string>
+  <string name="label_alert_sent">ALERT SENT</string>
+  <string name="label_alert_instruction">Press the button for 3 seconds to send an alert message</string>
+  <string name="label_alert_notification">Keep Calm! Getting in touch with you</string>
+
+  <string name="earthquakedo">Take cover under a strong table or any other piece of furniture and stay put until the shaking stops. Search for a corner in your house.
+        Stay away from glass, window doors, walls and any other weak structure that may fall.
+        Try to keep your cool and don\'t run around here and there, coming out of your houses. Move away from tall buildings, trees, streetlights and utility wires.
+        Once out of your houses, stay in open space till the shaking stops. Most casualties result from collapsing walls and falling objects.
+        Proceed cautiously once the earthquake has stopped</string>
+  <string name="cyclonedo">Check houses, secure loose tiles by cementing wherever necessary, repair doors and windows.
+        Check the area around the house. Remove dead or dying trees, anchor removable objects like lumber piles, loose bricks, garbage cans, sign-boards, loose zinc sheets etc.
+        Keep some wooden boards ready so that glass windows can be boarded.
+        If you do not have wooden boards handy, paste paper strips on glasses to prevent splinters flying into the house.
+        Keep a hurricane Lantern filled with kerosene, flash light and enough dry cells and keep them handy.</string>
+  <string name="flooddo">Switch off electrical and gas appliances, and turn off services off at the mains.
+        Carry your emergency kit and let your friends and family know where you are going.
+        Avoid contact with flood water it may be contaminated with sewage,oil,chemicals or other substances.
+        If you have to walk in standing water, use a pole or stick to ensure that you do not step into deep water, open manholes or ditches.
+        Stay away from power lines electrical current can travel through water, Report power lines that are down to the power company.</string>
+  <string name="volcanodo">Avoid all low-lying places because lava flows and mudflows are more likely to pass here.
+    Store as much food, water, light sources and batteries that are very useful in case of emergency.
+    Volcanic eruptions have ash falls so be prepared for masks or anything to cover nose and mouth.
+    Seek cover in case of ash falls rock falls.</string>
+  <string name="landslidedo">Prepare tour to hilly region according to information given by weather department or news channel.
+    Move away from landslide path or downstream valleys quickly without wasting time.
+    Keep drains clean,
+    Inspect drains for - litter, leaves, plastic bags, rubble etc.
+    Keep the weep holes open.</string>
+  <string name="earthquakedon">Do not light a match.
+        Do not move about or kick up dust.
+        Stop as quickly as safety permits and stay in the vehicle. Avoid stopping near or under buildings, trees, overpasses, and utility wires</string>
+  <string name="cyclonedon"> Avoid being misled by rumours.
+        Don’t leave shelters until informed by the rescue personals.
+        Don’t leave the safer place during lull, however minor repairs can be carried out.
+        Don’t touch the loose and dangling wire from lamp post, it may have electric current.</string>
+  <string name="flooddon">Don\'t walk through flowing water - currents can be deceptive, and shallow, fast moving water can knock you off your feet.
+    Don\'t swim through fast flowing water - you may get swept away or struck by an object in the water.
+    Don\'t drive through a flooded area - You may not be able to see abrupt drop - offs and only half a meter of flood water can carry a car away. Driving through flood water can also cause additional damage to nearby property.
+    Don\'t eat any food that has come into contact with flood water.
+    Don\'t reconnect your power supply until a qualified engineer has checked it. Be alert for gas leaks - do not smoke or use candles, lanterns, or open flames.</string>
+  <string name="volcanodon">Don\'t go outside unless you have proper protective gear.
+    Avoid low lying areas.
+    Don\'t watch a volcanic eruption as it can be deadly.</string>
+  <string name="landslidedon">Try to avoid construction and staying in vulnerable areas.
+    Do not panic and loose energy by crying.
+    Do not touch or walk over loose material and electrical wiring or pole.
+    Do not built houses near steep slopes and near drainage path.
+    Do not drink contaminated water directly from rivers, springs, wells but rain water if collected directly without is fine.</string>
+  <string name="usa_emergency_contact">tel:1-800-985-5990</string>
+  <string name="India_emergency_contact">tel:108</string>
+  <string name="mexico_emergency_contact">tel:1-800-985-5990</string>
+  <string name="china_emergency_contact">tel:1-240-276-2130</string>
+
+
+
+
+</resources>

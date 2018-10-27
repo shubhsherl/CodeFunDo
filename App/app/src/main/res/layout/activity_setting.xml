@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:card_view="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/activity_incident_filter"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:paddingLeft="@dimen/activity_horizontal_margin"
+  android:paddingTop="@dimen/activity_vertical_margin"
+  android:paddingRight="@dimen/activity_horizontal_margin"
+  android:paddingBottom="@dimen/activity_vertical_margin"
+  tools:context="com.shubh.watcherth.IncidentFilterActivity">
+
+  <ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical">
+
+      <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        android:visibility="gone"
+        card_view:cardCornerRadius="2dp"
+        card_view:contentPadding="5dp">
+
+        <LinearLayout
+          android:layout_width="wrap_content"
+          android:layout_height="match_parent"
+          android:orientation="vertical">
+
+          <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="By Category" />
+
+          <CheckBox
+            android:id="@+id/checkbox_filter_emergency"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Emergency" />
+
+          <CheckBox
+            android:id="@+id/checkbox_filter_cyclone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cyclone" />
+
+          <CheckBox
+            android:id="@+id/checkbox_filter_flood"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Flood" />
+
+          <CheckBox
+            android:id="@+id/checkbox_filter_volcano"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Volcano" />
+
+          <CheckBox
+            android:id="@+id/checkbox_filter_Landslide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Landslide" />
+
+          <CheckBox
+            android:id="@+id/checkbox_filter_earthquake"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Earthquake" />
+
+        </LinearLayout>
+
+      </android.support.v7.widget.CardView>
+
+      <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        card_view:cardCornerRadius="2dp"
+        card_view:contentPadding="5dp">
+
+        <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical">
+
+          <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:textAllCaps="true"
+            android:textSize="16dp"
+            android:text="Subscribe to" />
+
+          <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+              android:layout_width="0dp"
+              android:layout_height="wrap_content"
+              android:layout_weight="0.75"
+              android:orientation="vertical">
+
+              <EditText
+                android:id="@+id/subscription_setting_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.75"
+                android:hint="Enter address or places..." />
+
+              <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="Set distance..." />
+
+                <Spinner
+                  android:id="@+id/subscription_setting_distance_spinner"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content" />
+
+                <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="mi" />
+              </LinearLayout>
+
+            </LinearLayout>
+
+
+            <Button
+              android:id="@+id/subscription_setting_add1"
+              style="@style/submitButton"
+              android:layout_width="0dp"
+              android:layout_height="wrap_content"
+              android:layout_margin="5dp"
+              android:layout_weight="0.25"
+              android:onClick="onSubscribeAddClick"
+              android:text="Add" />
+          </LinearLayout>
+        </LinearLayout>
+      </android.support.v7.widget.CardView>
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <Button
+          android:id="@+id/reset_notification"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_margin="5dp"
+          android:onClick="resetNotification"
+          android:text="Reset" />
+      </LinearLayout>
+
+      <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        card_view:cardCornerRadius="2dp"
+        card_view:contentPadding="5dp">
+        <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical">
+          <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:textAllCaps="true"
+            android:textSize="16dp"
+            android:text="Contact Info" />
+        <EditText
+          android:id="@+id/userNumber"
+          android:layout_width="275dp"
+          android:layout_height="wrap_content"
+          android:digits="0123456789"
+          android:maxLength="10"
+          android:inputType="numberDecimal|numberSigned"
+          android:hint="Enter your contact number"
+          android:layout_gravity="center"
+          android:layout_marginTop="15dp"/>
+        <EditText
+          android:id="@+id/emergencyNumber1"
+          android:layout_width="275dp"
+          android:layout_height="wrap_content"
+          android:digits="0123456789"
+          android:maxLength="10"
+          android:inputType="numberDecimal|numberSigned"
+          android:hint="Enter emergecy contact 1"
+          android:layout_gravity="center"
+          android:layout_marginTop="15dp"/>
+          <EditText
+            android:id="@+id/emergencyNumber2"
+            android:layout_width="275dp"
+            android:layout_height="wrap_content"
+            android:digits="0123456789"
+            android:maxLength="10"
+            android:inputType="numberDecimal|numberSigned"
+            android:hint="Enter emergecy contact 2"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"/>
+          <EditText
+            android:id="@+id/emergencyNumber3"
+            android:layout_width="275dp"
+            android:layout_height="wrap_content"
+            android:digits="0123456789"
+            android:maxLength="10"
+            android:inputType="numberDecimal|numberSigned"
+            android:hint="Enter emergecy contact 3"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"/>
+          <EditText
+            android:id="@+id/emergencyNumber4"
+            android:layout_width="275dp"
+            android:layout_height="wrap_content"
+            android:digits="0123456789"
+            android:maxLength="10"
+            android:inputType="numberDecimal|numberSigned"
+            android:hint="Enter emergecy contact 4"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"/>
+          <Button
+            android:id="@+id/save_contact_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:onClick="saveContactInfo"
+            style="@style/submitButton"
+            android:text="Save" />
+        </LinearLayout>
+      </android.support.v7.widget.CardView>
+    </LinearLayout>
+
+
+  </ScrollView>
+
+</RelativeLayout>

@@ -1,0 +1,91 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.shubh.watcherth.ReportFragments.IncidentType">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select the type of the incident you want to report:"
+            style="@style/question"/>
+
+        <!--RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            !-->
+
+            <RadioButton android:id="@+id/radio_incidentType_emergency"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Emergency"
+                style="@style/radioButton"
+               />
+
+            <RadioButton android:id="@+id/radio_incidentType_cyclone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cyclone"
+                style="@style/radioButton"
+                />
+
+            <RadioButton android:id="@+id/radio_incidentType_flood"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Flood"
+                style="@style/radioButton"
+                />
+
+            <RadioButton android:id="@+id/radio_incidentType_volcano"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Volcano"
+                style="@style/radioButton"
+                />
+
+            <RadioButton android:id="@+id/radio_incidentType_landslide"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Landslide"
+                style="@style/radioButton"
+                />
+
+            <RadioButton android:id="@+id/radio_incidentType_earthquake"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Earthquake"
+                style="@style/radioButton"
+                />
+
+            <RadioButton android:id="@+id/radio_incidentType_other"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Other (Please Specify)"
+                style="@style/radioButton"
+                />
+        <!--/RadioGroup-->
+
+        <EditText
+            android:id="@+id/info_other_incidentType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Write Description Here"
+            />
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/button_next_incidentType"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="Go To..."
+            android:layout_gravity="center"
+            />
+
+    </LinearLayout>
+
+</FrameLayout>

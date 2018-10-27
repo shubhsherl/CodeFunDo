@@ -1,0 +1,63 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 27
+    buildToolsVersion '27.0.3'
+    defaultConfig {
+        applicationId "com.shubh.watcherth"
+        minSdkVersion 21
+        targetSdkVersion 27
+        multiDexEnabled true
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            //proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+
+repositories {
+    mavenCentral()
+    google()
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile files('libs/xbee-java-library-1.2.0.jar')
+
+    compile 'com.google.android.gms:play-services:11.0.4'
+    compile 'com.google.android.gms:play-services-auth:11.0.4'
+    compile 'com.facebook.android:facebook-android-sdk:[4,5)'
+    compile 'com.android.support:appcompat-v7:27.0.2'
+    compile 'com.android.support:design:27.0.2'
+    compile 'com.android.support:support-v4:27.0.2'
+    compile 'com.android.support:mediarouter-v7:27.0.2'
+    compile 'com.google.firebase:firebase-database:10.0.1'
+    compile 'com.google.firebase:firebase-messaging:10.2.1'
+    compile 'com.google.firebase:firebase-auth:11.0.2'
+    compile 'com.android.support.constraint:constraint-layout:1.0.0-beta5'
+    compile 'com.google.code.gson:gson:2.8.0'
+    compile 'org.slf4j:slf4j-api:1.7.12'
+    compile 'com.google.maps.android:android-maps-utils:0.3.4'
+    compile 'org.slf4j:slf4j-android:1.7.12'
+    compile 'com.digi:android-sdk-addon:3'
+    compile 'com.android.volley:volley:1.0.0'
+    compile 'com.firebaseui:firebase-ui-database:1.2.0'
+    testCompile 'junit:junit:4.12'
+}
+
+
+
+
+
+
+
+apply plugin: 'com.google.gms.google-services'
