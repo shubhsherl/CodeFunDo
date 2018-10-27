@@ -1,4 +1,5 @@
 # Code Fun Do 2019
+![Watcherth](App/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png?raw=true "Watcherth")
 This repo contains the code for Code.fun.do++ 2019 of Team WatchERTH.
 
 ## Team WatchErth
