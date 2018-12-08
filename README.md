@@ -1,4 +1,7 @@
 # Code Fun Do 2019
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/shubhsherl/CodeFunDo.svg)](https://greenkeeper.io/)
+
 ![Watcherth](App/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png?raw=true "Watcherth")
 
 This repo contains the code for Code.fun.do++ 2019 of Team WatchERTH.
